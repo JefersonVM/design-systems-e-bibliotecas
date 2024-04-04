@@ -1,25 +1,31 @@
-import "./App.css";
 import { useLocalStorage } from "react-use";
+import "./App.css";
 
 function App() {
-  const [value, setValue, remove] = useLocalStorage("my-key", "foo");
-  const [value2, setValue2, remove2] = useLocalStorage(
-    "my-key-2",
-    "valor-jeferson-vieira"
-  );
-
-  const [value3, setValue3, remove3] = useLocalStorage("my-key-3", "valor-3", {
-    raw: true,
+  const [value, setValue, remove] = useLocalStorage("user", {
+    name: "Jeferson",
+    age: 42,
   });
+  // localStorage.setItem("user2", JSON.stringify({ name: "Jeferson", age: 42 }));
+
   return (
     <div className="App">
-      <h1>Hello World!</h1>
       <div className="valores">
-        <div>Value: {value}</div>
+        <h1>useLocalStorage</h1>
+        <div>Value: {value.name}</div>
         <button onClick={() => setValue("bar")}>bar</button>
         <button onClick={() => setValue("baz")}>baz</button>
         <button onClick={() => remove()}>Remove</button>
       </div>
+      {/* <div className="valores">
+        <h1>localStorage</h1>
+        <div>Value: {JSON.parse(localStorage.getItem("user2")).name}</div>
+        <button onClick={() => localStorage.setItem("user2", "novoValor")}>
+          bar
+        </button>
+        <button onClick={() => setValue("baz")}>baz</button>
+        <button onClick={() => localStorage.removeItem("user2")}>Remove</button>
+      </div> */}
     </div>
   );
 }

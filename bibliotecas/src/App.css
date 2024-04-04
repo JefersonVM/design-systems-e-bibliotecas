@@ -8,6 +8,7 @@
 }
 
 .valores {
+  width: 230px;
   display: flex;
   flex-direction: column;
   gap: 20px;
